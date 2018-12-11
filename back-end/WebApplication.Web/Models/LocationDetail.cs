@@ -30,11 +30,31 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// two char stare abbreviation
         /// </summary>
-        public string State { get; set; }
+        public string District { get; set; }
 
         /// <summary>
         /// location zip code
         /// </summary>
-        public int Zip { get; set; }
+        public string Zip { get; set; }
+
+        /// <summary>
+        /// location Website URL
+        /// </summary>
+        public string WebLink { get; set; }
+
+        /// <summary>
+        /// location FaceBook URL
+        /// </summary>
+        public string FbLink { get; set; }
+
+        /// <summary>
+        /// Location Twitter URL
+        /// </summary>
+        public string TwLink { get; set; }
+
+        /// <summary>
+        /// Location Instagram URL
+        /// </summary>
+        public string IgLink { get; set; }
     }
 }
