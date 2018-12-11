@@ -25,10 +25,5 @@ namespace WebApplication.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        public IActionResult LocationDetail(string locationName)
-        {
-            return View();
-        }
     }
 }
