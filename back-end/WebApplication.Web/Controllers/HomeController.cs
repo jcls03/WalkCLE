@@ -31,6 +31,13 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
+        public IActionResult Detail(string locationName)
+        {
+            var location = locationDetailDAL.GetLocationDetail(locationName);
+
+            return View(location);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
