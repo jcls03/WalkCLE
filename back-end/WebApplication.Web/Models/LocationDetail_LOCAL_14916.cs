@@ -30,7 +30,7 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// two char stare abbreviation
         /// </summary>
-        public string District { get; set; }
+        public string State { get; set; }
 
         /// <summary>
         /// location zip code
@@ -41,23 +41,5 @@ namespace WebApplication.Web.Models
         /// Type of Location
         /// </summary>
         public string Type { get; set; }
-        /// location Website URL
-        /// </summary>
-        public string WebLink { get; set; }
-
-        /// <summary>
-        /// location FaceBook URL
-        /// </summary>
-        public string FbLink { get; set; }
-
-        /// <summary>
-        /// Location Twitter URL
-        /// </summary>
-        public string TwLink { get; set; }
-
-        /// <summary>
-        /// Location Instagram URL
-        /// </summary>
-        public string IgLink { get; set; }
     }
 }

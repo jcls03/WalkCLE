@@ -38,9 +38,6 @@ namespace WebApplication.Web.Models
         public string Zip { get; set; }
 
         /// <summary>
-        /// Type of Location
-        /// </summary>
-        public string Type { get; set; }
         /// location Website URL
         /// </summary>
         public string WebLink { get; set; }
