@@ -30,7 +30,7 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// two char stare abbreviation
         /// </summary>
-        public string District { get; set; }
+        public string State { get; set; }
 
         /// <summary>
         /// location zip code
@@ -41,6 +41,8 @@ namespace WebApplication.Web.Models
         /// Type of Location
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
         /// location Website URL
         /// </summary>
         public string WebLink { get; set; }
