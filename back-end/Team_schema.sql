@@ -83,15 +83,15 @@ CREATE TABLE venue_types
 	constraint pk_venue_types primary key (id)
 );
 
-CREATE TABLE lcoation_venue_types
+CREATE TABLE location_venue_types
 (
 	location_id		int		not null,
 	venue_type_id	int		not null,
 
 	
-	constraint pk_lcoation_venue_types primary key (location_id),
-	constraint fk_lcoation_venue_id foreign key (location_id) references locations (id),
-	constraint fk_lcoation_venue_type foreign key (venue_type_id) references venue_types (id)
+	constraint pk_location_venue_types primary key (location_id),
+	constraint fk_location_venue_id foreign key (location_id) references locations (id),
+	constraint fk_location_venue_type foreign key (venue_type_id) references venue_types (id)
 );
 
 
