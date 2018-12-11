@@ -52,5 +52,43 @@ namespace WebApplication.Web.DAL
 
             return locationDetail;
         }
+
+        public IList<LocationDetail> GetAllLocations(string locationType)
+        {
+
+            IList<LocationDetail> locationsOnMap = new List<LocationDetail>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT name, street, city, state FROM locations WHERE type = @xx;", conn);
+                    cmd.Parameters.AddWithValue("@xx", locationType);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        LocationDetail locations = new LocationDetail()
+                        {
+                            Name = Convert.ToString(reader["name"]),
+                            City = Convert.ToString(reader["city"]),
+                            State = Convert.ToString(reader["district"]),
+                            Zip = Convert.ToString(reader["zip"]),
+                            Type = Convert.ToString(reader["type"])
+                        };
+                        locationsOnMap.Add(locations);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return locationsOnMap;
+        }
+
+
     }
 }

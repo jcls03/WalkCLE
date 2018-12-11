@@ -10,5 +10,7 @@ namespace WebApplication.Web.DAL
     {
         LocationDetail GetLocationDetail(string locationName);
 
+        IList<LocationDetail> GetAllLocations(string locationType);
+        
     }
 }

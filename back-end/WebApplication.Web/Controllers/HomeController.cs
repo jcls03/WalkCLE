@@ -4,19 +4,30 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
 
 namespace WebApplication.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private ILocationDetailDAL locationDetailDAL;
+
+        public HomeController(ILocationDetailDAL locationDetailDAL)
+        {
+            this.locationDetailDAL = locationDetailDAL;
+        }
+
         public IActionResult Index()
         {            
             return View();
         }
 
-        public IActionResult Map()
+        [HttpPost]
+        public IActionResult Map(string type)
         {
+            var locationPins = locationDetailDAL.GetAllLocations(type);
+
             return View();
         }
 

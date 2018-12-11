@@ -38,9 +38,11 @@ namespace WebApplication.Web.Models
         public string Zip { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Type of Location
         /// </summary>
         public string Type { get; set; }
+=======
         /// location Website URL
         /// </summary>
         public string WebLink { get; set; }
@@ -59,5 +61,6 @@ namespace WebApplication.Web.Models
         /// Location Instagram URL
         /// </summary>
         public string IgLink { get; set; }
+>>>>>>> afaa3ef9505ae2a3403a36fd0c50b3c248d3a0d0
     }
 }
