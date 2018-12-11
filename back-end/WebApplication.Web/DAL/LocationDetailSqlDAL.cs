@@ -63,8 +63,8 @@ namespace WebApplication.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT name, street, city, state FROM locations WHERE type = @xx;", conn);
-                    cmd.Parameters.AddWithValue("@xx", locationType);
+                    SqlCommand cmd = new SqlCommand("SELECT name, street, city, district, zip, [type] FROM locations INNER JOIN location_venue_types ON location_venue_types.location_id = locations.id INNER JOIN venue_types ON venue_types.id = location_venue_types.venue_type_id;", conn);
+                    //cmd.Parameters.AddWithValue("@xx", locationType);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
