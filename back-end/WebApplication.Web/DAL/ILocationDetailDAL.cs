@@ -6,9 +6,11 @@ using WebApplication.Web.Models;
 
 namespace WebApplication.Web.DAL
 {
-    interface ILocationDetailDAL
+    public interface ILocationDetailDAL
     {
         LocationDetail GetLocationDetail(string locationName);
 
+        IList<LocationDetail> GetAllLocations(string locationType);
+        
     }
 }

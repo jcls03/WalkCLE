@@ -35,6 +35,11 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// location zip code
         /// </summary>
-        public int Zip { get; set; }
+        public string Zip { get; set; }
+
+        /// <summary>
+        /// Type of Location
+        /// </summary>
+        public string Type { get; set; }
     }
 }

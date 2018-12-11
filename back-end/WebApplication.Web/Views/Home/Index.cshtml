@@ -1,19 +1,23 @@
-﻿@{
+﻿@model LocationDetail
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <h1>WalkCLE</h1>
-<label>Where would you like to go?</label>
-<select>
-    <option value="" disabled selected hidden>I'm looking for: </option>
-    <option>Bar</option>
-    <option>Restaurant</option>
-    <option>Park</option>
-    <option>Landmark</option>
-</select> 
-<p> near </p>
-<input type="text" />
-<button>
-    <i class="glyphicon glyphicon-search"></i>
-    <span class="buttonCopy">Search</span>
-</button>
+
+
+<form asp-controller="home" asp-action="map" method="post">
+    <select asp-for="Type">
+        <option value="" disabled selected hidden>I'm looking for: </option>
+        <option value="Bar">Bar</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Park">Park</option>
+        <option value="Landmark">Landmark</option>
+    </select>
+    <p> near </p>
+    <input type="text" value="Tech Elevator" />
+    <button>
+        <i class="glyphicon glyphicon-search"></i>
+        <span class="buttonCopy">Search</span>
+    </button>
+</form>
