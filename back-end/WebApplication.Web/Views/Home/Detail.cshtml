@@ -1,0 +1,30 @@
+﻿@model LocationDetail
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>@Model.Name</h2>
+
+<p> @Model.Description</p>
+
+<p>Located at:
+    @Model.Street
+    @Model.City
+    @Model.State
+    @Model.Zip</p>
+
+
+
+
+
+
+
+
+
+<a href="@Model.WebLink"> @Model.Name's Web Site </a>
+
+<a href="@Model.FbLink"> FaceBook </a>
+
+<a href="@Model.TwLink"> Twitter</a>
+
+<a href="@Model.IgLink"> Instagram </a>

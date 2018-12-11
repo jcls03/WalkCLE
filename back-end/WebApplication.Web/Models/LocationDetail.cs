@@ -41,6 +41,8 @@ namespace WebApplication.Web.Models
         /// Type of Location
         /// </summary>
         public string Type { get; set; }
+        
+        /// <summary>
         /// location Website URL
         /// </summary>
         public string WebLink { get; set; }
