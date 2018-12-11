@@ -69,7 +69,8 @@ namespace WebApplication.Web
             // For Authentication
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAuthProvider, SessionAuthProvider>();
-            services.AddTransient<IUserDAL>(m => new UserSqlDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=DemoDB;Integrated Security=True"));
+            services.AddTransient<IUserDAL>(m => new UserSqlDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=WalkCLE;Integrated Security=True"));
+            services.AddTransient<ILocationDetailDAL>(m => new LocationDetailSqlDAL(@"Data Source=.\SQLEXPRESS;Initial Catalog=WalkCLE;Integrated Security=True"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
