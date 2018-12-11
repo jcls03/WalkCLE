@@ -73,7 +73,7 @@ namespace WebApplication.Web.DAL
                         {
                             Name = Convert.ToString(reader["name"]),
                             City = Convert.ToString(reader["city"]),
-                            State = Convert.ToString(reader["district"]),
+                            District = Convert.ToString(reader["district"]),
                             Zip = Convert.ToString(reader["zip"]),
                             Type = Convert.ToString(reader["type"])
                         };
