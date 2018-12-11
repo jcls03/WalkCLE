@@ -35,7 +35,7 @@ namespace WebApplication.Web.DAL
                         locationDetail.Description = Convert.ToString(reader["description"]);
                         locationDetail.Street = Convert.ToString(reader["street"]);
                         locationDetail.City = Convert.ToString(reader["city"]);
-                        locationDetail.District = Convert.ToString(reader["district"]);
+                        locationDetail.State = Convert.ToString(reader["district"]);
                         locationDetail.Zip = Convert.ToString(reader["zip"]);
                         locationDetail.WebLink = Convert.ToString(reader["web_link"]);
                         locationDetail.FbLink = Convert.ToString(reader["fb_link"]);
@@ -73,7 +73,7 @@ namespace WebApplication.Web.DAL
                         {
                             Name = Convert.ToString(reader["name"]),
                             City = Convert.ToString(reader["city"]),
-                            District = Convert.ToString(reader["district"]),
+                            State = Convert.ToString(reader["district"]),
                             Zip = Convert.ToString(reader["zip"]),
                             Type = Convert.ToString(reader["type"])
                         };
