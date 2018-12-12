@@ -48,5 +48,10 @@ namespace WebApplication.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Practice()
+        {
+            return View();
+        }
     }
 }
