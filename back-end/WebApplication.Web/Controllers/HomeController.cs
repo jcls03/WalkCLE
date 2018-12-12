@@ -28,7 +28,7 @@ namespace WebApplication.Web.Controllers
         {
             var locationPins = locationDetailDAL.GetAllLocations(type);
 
-            return View();
+            return View(locationPins);
         }
 
         public IActionResult Detail(string locationName)

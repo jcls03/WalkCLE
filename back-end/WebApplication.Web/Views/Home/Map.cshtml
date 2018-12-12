@@ -1,6 +1,7 @@
-﻿
+﻿@model IList<LocationDetail>
 @{
     ViewData["Title"] = "Map";
+    
 }
 
 
@@ -42,10 +43,21 @@
             window.onload = function () {
                 L.mapquest.key = 'GzQiD08G1RdLpl99mQOAHYmKcmK7yXkZ';
 
-                @*@while (i = 0)*@
+               
+                //for (let i = 0; i < Model.length; i++) {
+                //    let locationPin = 'Model[0].Street + "," + Model[0].City + "," + Model[0].State + "," + Model[0].Zip'
+                //}
+                //var locationPin = 'Model[0].Street + "," + Model[0].City + "," + Model[0].State + "," + Model[0].Zip';
+                //let locationPin1 = '7100 Euclid Ave #140, Cleveland, OH 44103';
+                //let locationPin2 = '6610 Euclid Ave, Cleveland, OH 44103';
+                
+                //'<%= locationPin %>'
+                //'7100 Euclid Ave #140, Cleveland, OH 44103' , '6610 Euclid Ave, Cleveland, OH 44103'
 
                 // Geocode three locations, then call the createMap callback
                 L.mapquest.geocoding().geocode(['7100 Euclid Ave #140, Cleveland, OH 44103', '6610 Euclid Ave, Cleveland, OH 44103'], createMap);
+                
+                
 
                 function createMap(error, response) {
                     // Initialize the Map
