@@ -26,7 +26,7 @@ namespace WebApplication.Web.Controllers
         [HttpPost]
         public IActionResult Map(string type)
         {
-            var locationPins = locationDetailDAL.GetAllLocations(type);
+            // var locationPins = locationDetailDAL.GetAllLocations(type);
 
             return View();
         }
