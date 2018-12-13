@@ -28,7 +28,7 @@ namespace WebApplication.Web.Controllers
         {
             // var locationPins = locationDetailDAL.GetAllLocations(type);
 
-            return View();
+            return View(locationPins);
         }
 
         public IActionResult Detail(string locationName)
@@ -42,6 +42,16 @@ namespace WebApplication.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Directions()
+        {
+            return View();
+        }
+
+        public IActionResult Practice()
+        {
+            return View();
         }
     }
 }

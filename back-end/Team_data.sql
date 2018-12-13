@@ -45,7 +45,11 @@ VALUES (@techElevatorId,
 
 
 INSERT INTO hours_of_operation (location_id, day_id, open_time, close_time)
-VALUES (@techElevatorId, 1, 09, 17), (@techElevatorId, 2, 09, 17);
+VALUES (@techElevatorId, 1, 09, 17), 
+(@techElevatorId, 2, 09, 17),
+(@techElevatorId, 3, 09, 17), 
+(@techElevatorId, 4, 09, 17),
+;
 
 
 COMMIT TRANSACTION;

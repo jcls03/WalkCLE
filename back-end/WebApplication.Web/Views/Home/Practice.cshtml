@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Practice";
+}
+
+<h2>Practice</h2>
+
+<script>
+    function onPositionRecieved(position) {
+        console.log(position);
+        console.log(position.coords.latitude);
+    }
+
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(onPositionRecieved)
+    }
+    
+</script>
