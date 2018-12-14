@@ -5,19 +5,84 @@
 
 <h1>WalkCLE</h1>
 
+<style>
+    img {
+        /* Add the blur effect */
+        filter:contrast(140%);
+        filter:blur(.3px);
+        -webkit-filter: blur(3px);
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 
-<form asp-controller="home" asp-action="map" method="post">
-    <select asp-for="Type">
-        <option value="" disabled selected hidden>I'm looking for: </option>
-        <option value="Bar">Bar</option>
-        <option value="Restaurant">Restaurant</option>
-        <option value="Park">Park</option>
-        <option value="Landmark">Landmark</option>
-    </select>
-    <p> near </p>
-    <input type="text" value="Tech Elevator" />
-    <button>
-        <i class="glyphicon glyphicon-search"></i>
-        <span class="buttonCopy">Search</span>
-    </button>
-</form>
+    #bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+
+
+    .EntryField {
+        border: 3px solid rgba(25, 25, 25, .5);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 50%;
+        padding: 20px;
+        background: rgba(25, 25, 25, .5);
+        border-radius: 3px;
+    }
+
+    button {
+        border-radius: 9px;
+        margin: 5px;
+    }
+
+    span {
+        font-size: 18px;
+    }
+
+    head {
+        position: center;
+    }
+</style>
+
+<html>
+<head>
+</head>
+<body>
+    <h2>CleWalks</h2>
+    <h4>New to Cleveland or just itching for a new hangout or hotspot? Let us help you out!</h4>
+
+    <img src="/images/BetterMap.PNG" id="bg" />
+
+    <div class="EntryField">
+        <form asp-controller="home" asp-action="map" method="post">
+            <select asp-for="Type">
+                <option value="" disabled selected hidden>I'm looking for: </option>
+                <option value="Bar">Bar</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Park">Park</option>
+                <option value="Landmark">Landmark</option>
+            </select>
+            <p> near </p>
+            <input type="text" value="Tech Elevator" />
+            <br />
+            <button>
+                <i class="glyphicon glyphicon-search"></i>
+                <br />
+                <span class="buttonCopy">Search</span>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
