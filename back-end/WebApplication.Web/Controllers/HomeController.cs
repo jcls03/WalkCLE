@@ -17,16 +17,20 @@ namespace WebApplication.Web.Controllers
             this.locationDetailDAL = locationDetailDAL;
         }
 
-        
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var location = new LocationDetail();
+
+            return View(location);
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Map(string type)
         {
-            return View();
+            var location = new LocationDetail { Type = type };
+
+            return View(location);
         }
 
         public IActionResult Detail(string locationName)
