@@ -75,8 +75,8 @@ namespace WebApplication.Web.DAL
                             City = Convert.ToString(reader["city"]),
                             Street = Convert.ToString(reader["street"]),
                             State = Convert.ToString(reader["district"]),
+                            // Type = Convert.ToString(reader["type"]),
                             Zip = Convert.ToString(reader["zip"]),
-                            Type = Convert.ToString(reader["type"])
                         };
                         locationsOnMap.Add(locations);
                     }

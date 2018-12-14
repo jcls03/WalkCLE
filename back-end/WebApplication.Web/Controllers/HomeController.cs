@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,17 +17,16 @@ namespace WebApplication.Web.Controllers
             this.locationDetailDAL = locationDetailDAL;
         }
 
+        
         public IActionResult Index()
-        {            
+        {
             return View();
         }
 
         [HttpPost]
         public IActionResult Map(string type)
         {
-            // var locationPins = locationDetailDAL.GetAllLocations(type);
-
-            return View(locationPins);
+            return View();
         }
 
         public IActionResult Detail(string locationName)

@@ -5,15 +5,15 @@
 
 <h1>WalkCLE</h1>
 
-
 <form asp-controller="home" asp-action="map" method="post">
-    <select asp-for="Type">
+    @*<select asp-for="Type">
         <option value="" disabled selected hidden>I'm looking for: </option>
         <option value="Bar">Bar</option>
         <option value="Restaurant">Restaurant</option>
         <option value="Park">Park</option>
         <option value="Landmark">Landmark</option>
-    </select>
+    </select>*@
+
     <p> near </p>
     <input type="text" value="Tech Elevator" />
     <button>
