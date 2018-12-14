@@ -1,0 +1,21 @@
+﻿@model LocationDetail
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<form method="get" asp-controller="search" asp-action="map">
+    <label asp-for="Type"></label>
+    <input asp-for="Type" />
+
+
+
+    <p> near </p>
+    <input type="text" value="Tech Elevator" />
+    <button>
+        <i class="glyphicon glyphicon-search"></i>
+        <span class="buttonCopy">Search</span>
+    </button>
+
+</form>
