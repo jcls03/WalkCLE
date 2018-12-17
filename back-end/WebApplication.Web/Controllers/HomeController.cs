@@ -31,6 +31,7 @@ namespace WebApplication.Web.Controllers
             var location = new LocationDetail { Type = type };
 
             return View(location);
+
         }
 
         public IActionResult Detail(string locationName)
