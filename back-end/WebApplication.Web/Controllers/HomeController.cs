@@ -26,9 +26,9 @@ namespace WebApplication.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Map(string type)
+        public IActionResult Map(string origin, string type)
         {
-            var location = new LocationDetail { Type = type };
+            var location = new LocationDetail { Origin = origin, Type = type };
 
             return View(location);
 
