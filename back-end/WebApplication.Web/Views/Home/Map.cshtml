@@ -26,7 +26,7 @@
             opacity: .45; /* Set the opacity for a slightly transparent Google Form */
             color: white;
             grid-template-columns: 2fr 5fr;
-            grid-template-areas: "searchBar ."
+            grid-template-areas: "searchBar the_void"
         }
 
         .searchBar {
@@ -36,8 +36,14 @@
 
         .searchBarInfo {
             display: flex;
-            flex-direction
+            flex-direction: column;
         }
+
+        #the_void {
+            display: none;
+        }
+
+
 
     </style>
 </head>
@@ -49,8 +55,10 @@
         function initMap() {
             // Create the map.
             var techElevator = { lat: 41.503756, lng: -81.638892 };
+            var cleveland = { lat: 41.4993, lng: -81.6944 };
+            
             map = new google.maps.Map(document.getElementById('map'), {
-                center: techElevator,
+                center: cleveland,
                 zoom: 15,
                 minZoom: 11,
                 maxZoom: 18
@@ -75,6 +83,12 @@
                 map.panTo(lastValidCenter);
             });
 
+            var marker = new google.maps.Marker({
+                position: cleveland,
+                map: map,
+                title: 'Elevate Yourself!'
+            });
+
             // Create the places service.
             var service = new google.maps.places.PlacesService(map);
             var getNextPage = null;
@@ -86,7 +100,7 @@
 
             // Perform a nearby search.
             service.nearbySearch(
-                { location: techElevator, radius: 3218, type: ['@Model.Type'] },
+                { location: cleveland, rankBy: google.maps.places.RankBy.DISTANCE, type: ['@Model.Type'] },
                 function (results, status, pagination) {
                     if (status !== 'OK') return;
 
@@ -129,6 +143,7 @@
 
     </script>
     <div class="mapGrid">
+        <div id="the_void"
         <div class="searchBar">
             <h2>Results</h2>
             <ul id="places"></ul>
