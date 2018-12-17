@@ -30,7 +30,7 @@ namespace WebApplication.Web.Controllers
         {
             var location = new LocationDetail { Type = type };
 
-            return View();
+            return View(location);
 
         }
 
