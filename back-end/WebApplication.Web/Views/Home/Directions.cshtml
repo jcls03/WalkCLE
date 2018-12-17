@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model LocationDetail
 @{
     ViewData["Title"] = "Map";
@@ -12,10 +13,43 @@
             height: 400px; /* The height is 400 pixels */
             width: 100%;
             /* The width is the width of the web page */
+=======
+﻿<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 80%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 500px;
+            left: 25%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+>>>>>>> Playground
         }
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <div id="map"></div>
     <script>
         var map;
@@ -66,6 +100,55 @@
                     // still within valid bounds, so save the last valid position
                     lastValidCenter = map.getCenter();
                     return;
+=======
+    <div id="floating-panel">
+        <b>Start: </b>
+        <select id="start">
+            <option value= '7100 Euclid Ave. #140, Cleveland, OH 44103'>Tech Elevator</option>
+            <option value= '11111 Euclid Ave., Cleveland, OH 44106'>Jolly Scholar</option>
+            <option value= '6610 Euclid Ave., Cleveland, OH 44103'>Galucci's Italian Foods</option>
+            <option value= '2335 E. 82nd St., Cleveland, OH 44104'>Fairfax Park</option>
+        </select>
+        <b>End: </b>
+        <select id="end">
+            <option value='7100 Euclid Ave. #140, Cleveland, OH 44103'>Tech Elevator</option>
+            <option value='11111 Euclid Ave., Cleveland, OH 44106'>Jolly Scholar</option>
+            <option value='6610 Euclid Ave., Cleveland, OH 44103'>Galucci's Italian Foods</option>
+            <option value='2335 E. 82nd St., Cleveland, OH 44104'>Fairfax Park</option>         
+        </select>
+    </div>
+    <div id="map"></div>
+    <!-- Replace the value of the key parameter with your own API key. -->
+
+    <script>
+        function initMap() {
+            var directionsService = new google.maps.DirectionsService;
+            var directionsDisplay = new google.maps.DirectionsRenderer;
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: { lat: 41.85, lng: -87.65 }
+            });
+            directionsDisplay.setMap(map);
+
+
+            var onChangeHandler = function () {
+                calculateAndDisplayRoute(directionsService, directionsDisplay);
+            };
+            document.getElementById('start').addEventListener('change', onChangeHandler);
+            document.getElementById('end').addEventListener('change', onChangeHandler);
+        }
+
+        function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+            directionsService.route({
+                origin: document.getElementById('start').value,
+                destination: document.getElementById('end').value,
+                travelMode: 'DRIVING'
+            }, function (response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+>>>>>>> Playground
                 }
 
                 // not valid anymore => return to last valid position
@@ -75,7 +158,16 @@
         }
 
     </script>
+<<<<<<< HEAD
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>*@
+=======
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw&callback=initMap">
+    </script>
+</body>
+</html>
+
+>>>>>>> Playground
