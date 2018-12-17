@@ -9,10 +9,31 @@
     <style>
                 /* Set the size of the div element that contains the map */
         #map {
-            height: 400px; /* The height is 400 pixels */
+            height: 100%;
             width: 100%;
-            /* The width is the width of the web page */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
         }
+
+        .mapGrid {
+            display: grid;
+            position: relative;
+            z-index: 1; /* The z-index should be higher than Google Maps */
+            width: auto;
+            height: auto;
+            opacity: .45; /* Set the opacity for a slightly transparent Google Form */
+            color: white;
+            grid-template-columns: 2fr 5fr;
+            grid-template-areas: "searchBar ."
+        }
+
+        .searchBar {
+            grid-area: searchBar;
+            background: black;
+        }
+
     </style>
 </head>
 <body>
@@ -102,11 +123,12 @@
         }
 
     </script>
-
-    <div id="right-panel">
-        <h2>Results</h2>
-        <ul id="places"></ul>
-        <button id="more">More results</button>
+    <div class="mapGrid">
+        <div class="searchBar">
+            <h2>Results</h2>
+            <ul id="places"></ul>
+            <button id="more">More results</button>
+        </div>
     </div>
 
 
