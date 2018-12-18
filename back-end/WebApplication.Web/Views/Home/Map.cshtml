@@ -32,15 +32,20 @@
         .searchBar {
             grid-area: searchBar;
             background: black;
+            height: auto;
+            width: 20%;
+            position:absolute;
+            opacity: .8;
         }
 
         .searchBarInfo {
             display: flex;
+
             flex-direction: column;
         }
 
         #the_void {
-            display: none;
+            display:none;
         }
 
 
@@ -142,14 +147,13 @@
         }
 
     </script>
-    <div class="mapGrid">
-        <div id="the_void"
+
+
         <div class="searchBar">
             <h2>Results</h2>
             <ul id="places"></ul>
             <button id="more">More results</button>
         </div>
-    </div>
 
 
 
