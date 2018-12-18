@@ -9,36 +9,10 @@
     <style>
                 /* Set the size of the div element that contains the map */
         #map {
-            height: 100%;
+            height: 400px; /* The height is 400 pixels */
             width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
+            /* The width is the width of the web page */
         }
-
-        .mapGrid {
-            display: grid;
-            position: relative;
-            z-index: 1; /* The z-index should be higher than Google Maps */
-            width: auto;
-            height: auto;
-            opacity: .45; /* Set the opacity for a slightly transparent Google Form */
-            color: white;
-            grid-template-columns: 2fr 5fr;
-            grid-template-areas: "searchBar ."
-        }
-
-        .searchBar {
-            grid-area: searchBar;
-            background: black;
-        }
-
-        .searchBarInfo {
-            display: flex;
-            flex-direction: column;
-        }
-
     </style>
 </head>
 <body>
@@ -53,8 +27,7 @@
                 center: techElevator,
                 zoom: 15,
                 minZoom: 11,
-                maxZoom: 18,
-                display: none
+                maxZoom: 18
             });
 
 
@@ -129,12 +102,11 @@
         }
 
     </script>
-    <div class="mapGrid">
-        <div class="searchBar">
-            <h2>Results</h2>
-            <ul id="places"></ul>
-            <button id="more">More results</button>
-        </div>
+
+    <div id="right-panel">
+        <h2>Results</h2>
+        <ul id="places"></ul>
+        <button id="more">More results</button>
     </div>
 
 
