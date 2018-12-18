@@ -86,12 +86,15 @@
         </div>
         <div class="entryField">
             <form asp-controller="home" asp-action="map" method="get">
-                <label asp-for="Type"></label>
-                <input asp-for="Type" />
+                <label asp-for="Type">Search for: </label>
+                <select asp-for="Type" asp-items="LocationDetail.TypeList"></select>
+
+                <label asp-for="Origin">Near: </label>
+                <input asp-for="Origin" />
 
 
-                <p> near </p>
-                <input type="text" value="Tech Elevator" />
+                @*<p> near </p>
+                <input type="text" value="Tech Elevator" />*@
                 <br />
                 <button>
                     <i class="glyphicon glyphicon-search"></i>
