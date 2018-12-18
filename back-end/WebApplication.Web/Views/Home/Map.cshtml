@@ -1,7 +1,7 @@
 ﻿@model LocationDetail
 @{
     ViewData["Title"] = "Map";
-    
+
 }
 
 <html>
@@ -51,17 +51,56 @@
     <div id="map"></div>
     <script>
         var map;
+        // var cleveland = { lat: 41.4993, lng: -81.6944 };
+        var origin = "@Model.Origin";
+        var originLat = 0;
+        var originLng = 0;
+        
+        
+        function getlatlng() {
+
+            var address1 = origin
+            var city = "Cleveland";
+            var state = "OH";
+
+
+            var address = address1 + ',' + city + ',' + state;
+            console.log(address);
+
+            var APIUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw";
+
+            return console.log(APIUrl);
+
+            fetch(APIUrl, {
+                method: "GET",
+                body: JSON
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    originLat = data.results[0].geometry.location.lat,
+                    originLng = data.results[0].geometry.location.lng
+                });
+
+
+
+            //$.getJSON(APIUrl, function (data) {
+            //    console.log(data.results[0].geometry.location.lat),
+
+            //    originLat = data.results[0].geometry.location.lat,
+            //    originLng = data.results[0].geometry.location.lng
+
+            //});
+
+            return console.log(originLat, originLng);
+        }
+
 
         function initMap() {
             // Create the map.
-            var origin = 'Dealer Tire Cleveland Ohio';
             map = new google.maps.Map(document.getElementById('map'), {
-                center: origin,
-            var techElevator = { lat: 41.503756, lng: -81.638892 };
-            var cleveland = { lat: 41.4993, lng: -81.6944 };
-            
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: cleveland,
+                center: { lat: originLat, lng: originLng },
                 zoom: 15,
                 minZoom: 11,
                 maxZoom: 18
@@ -86,11 +125,11 @@
                 map.panTo(lastValidCenter);
             });
 
-            var marker = new google.maps.Marker({
-                position: cleveland,
-                map: map,
-                title: 'Elevate Yourself!'
-            });
+            //var marker = new google.maps.Marker({
+            //    position: cleveland,
+            //    map: map,
+            //    title: 'Elevate Yourself!'
+            //});
 
             // Create the places service.
             var service = new google.maps.places.PlacesService(map);
@@ -103,7 +142,9 @@
 
             // Perform a nearby search.
             service.nearbySearch(
-                { location: cleveland, rankBy: google.maps.places.RankBy.DISTANCE, type: ['@Model.Type'] },
+                // location: was cleveland hard code
+
+                { location: { lat: originLat, lng: originLng }, rankBy: google.maps.places.RankBy.DISTANCE, type: ['@Model.Type'] },
                 function (results, status, pagination) {
                     if (status !== 'OK') return;
 
@@ -145,8 +186,9 @@
         }
 
     </script>
+
+
     <div class="mapGrid">
-        <div id="the_void"
         <div class="searchBar">
             <h2>Results</h2>
             <ul id="places"></ul>
