@@ -3,14 +3,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>WalkCLE</h1>
 
 <style>
+
+
     img {
         /* Add the blur effect */
-        filter:contrast(140%);
-        filter:blur(.3px);
-        -webkit-filter: blur(3px);
+        filter: contrast(120%);
+        filter: blur(.1px);
+        -webkit-filter: blur(.8px);
         /* Full height */
         height: 100%;
         /* Center and scale the image nicely */
@@ -27,15 +28,20 @@
         min-height: 100%;
     }
 
+    .frontGrid {
+        display:grid;
+        z-index: 2;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-template-columns:1fr;
+        grid-template-areas:
+            "text"
+            "entryField"
+            "."
+    }
 
-
-    .EntryField {
+    .entryField {
         border: 3px solid rgba(25, 25, 25, .5);
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
         width: 50%;
         padding: 20px;
         background: rgba(25, 25, 25, .5);
@@ -60,30 +66,40 @@
 <head>
 </head>
 <body>
-    <h2>CleWalks</h2>
-    <h4>New to Cleveland or just itching for a new hangout or hotspot? Let us help you out!</h4>
 
-    <img src="/images/BetterMap.PNG" id="bg" />
+    <img src="~/images/DimMapBackground.png" id="bg" />
+    
+    <div class="Icons">
+        <button class="foodAndDrink"></button>
+        <button class="museum"></button>
+        <button class="theater"></button>
+        <button class="park"></button>
+        <button class="sport"></button>
+        <button class="music"></button>
+        <button class="landmark"></button>
+    </div>
 
-    <div class="EntryField">
-        <form asp-controller="home" asp-action="map" method="get">
-            <label asp-for="Type">Search for: </label>
-            <select asp-for="Type" asp-items="LocationDetail.TypeList"></select>
-            <br />
+    <div class="frontGrid">
+        <div class="text">
+            <h2>CLEWalks</h2>
+            <h4>Need help getting around? Let us be your guide!</h4>
+        </div>
+        <div class="entryField">
+            <form asp-controller="home" asp-action="map" method="get">
+                <label asp-for="Type"></label>
+                <input asp-for="Type" />
 
-            <label asp-for="Origin">Near: </label>
-            <input asp-for="Origin" />
-            <br />
 
-            @*<p> near </p>
-        <input type="text" value="Tech Elevator" />
-        <br />*@
-            <button>
-                <i class="glyphicon glyphicon-search"></i>
+                <p> near </p>
+                <input type="text" value="Tech Elevator" />
                 <br />
-                <span class="buttonCopy">Search</span>
-            </button>
-        </form>
+                <button>
+                    <i class="glyphicon glyphicon-search"></i>
+                    <br />
+                    <span class="buttonCopy">Let's Go!</span>
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
