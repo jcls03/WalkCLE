@@ -44,6 +44,11 @@ namespace WebApplication.Web.Models
         public string Type { get; set; }
 
         /// <summary>
+        /// User neterd start location
+        /// </summary>
+        public string Origin { get; set; }
+
+        /// <summary>
         /// location Website URL
         /// </summary>
         public string WebLink { get; set; }
@@ -65,15 +70,19 @@ namespace WebApplication.Web.Models
 
         public static IList<SelectListItem> TypeList = new List<SelectListItem>()
         {
-            new SelectListItem() { Text = "Bar", Value = "bar" },
+            new SelectListItem() { Text = "Restaurants and Bars", Value = "bar" },
 
-            new SelectListItem() { Text = "Restaurant", Value = "restaurant" },
+            new SelectListItem() { Text = "Museums", Value = "museum" },
 
-            new SelectListItem() { Text = "Park", Value = "park" },
+            new SelectListItem() { Text = "Theaters", Value = "theater" },
 
-            new SelectListItem() { Text = "Landmark", Value = "landmark" },
+            new SelectListItem() { Text = "Sports Stadiums & Venues", Value = "stadium" },
 
-            new SelectListItem() { Text = "Museum", Value = "museum" },
+            new SelectListItem() { Text = "Music Venues & Performances", Value = "concert_hall" },
+
+            new SelectListItem() { Text = "Parks & Outdoor Recreation", Value = "park" },
+
+            new SelectListItem() { Text = "Landmarks & Historical Sites", Value = "landmark" },
         };
     }
 }
