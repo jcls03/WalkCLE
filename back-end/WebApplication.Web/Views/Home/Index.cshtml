@@ -199,17 +199,36 @@
             </div>
 
             <div class="buttons" style="padding-bottom: 20px;">
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button></button>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="bar" />
+                    <button>Bars</button>
+                </form>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="museum" />
+                    <button>Museums</button>
+                </form>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="cinema" />
+                    <button>Theater</button>
+                </form>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="stadium" />
+                    <button>Sports Fields</button>
+                </form>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="music" />
+                    <button>Music Venues</button>
+                </form>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="park" />
+                    <button>Parks</button>
+                </form>
+                <form asp-controller="home" asp-action="map" method="get">
+                    <input type="hidden" asp-for="Type" value="historical site" />
+                    <button>Historical Landmarks</button>
+                </form>
             </div>
         </div>
-
     </div>
 </body>
 </html>

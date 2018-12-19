@@ -46,7 +46,7 @@ namespace WebApplication.Web.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// User neterd start location
+        /// User enterd start location
         /// </summary>
         public string Origin { get; set; }
 
@@ -74,7 +74,7 @@ namespace WebApplication.Web.Models
         [DisplayName("-- Select an activity --")]
         public static IList<SelectListItem> TypeList = new List<SelectListItem>()
         {
-            new SelectListItem() { Text = "Restaurants and Bars", Value = "bar" },
+            
 
             new SelectListItem() { Text = "Museums", Value = "museum" },
 
