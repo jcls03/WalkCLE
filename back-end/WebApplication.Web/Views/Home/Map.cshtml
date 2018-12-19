@@ -9,9 +9,12 @@
     <style>
                 /* Set the size of the div element that contains the map */
         #map {
-            height: 400px; /* The height is 400 pixels */
+            height: 100%;
             width: 100%;
-
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
             /* The width is the width of the web page */
         }
 
@@ -131,7 +134,16 @@
             };
 
             // Perform a nearby search.
-            service.nearbySearch(
+            var request = {
+                location: cleveland,
+                radius: '200',
+                query: 'theater'
+            }
+
+            service = new google.maps.places.PlacesService(map)
+            service.textSearch(request, callback);
+
+            @*service.nearbySearch(
 
                 { location: { lat: originLat, lng: originLng }, rankBy: google.maps.places.RankBy.DISTANCE, type: ['@Model.Type'] },
                 function (results, status, pagination) {
@@ -142,7 +154,7 @@
                     getNextPage = pagination.hasNextPage && function () {
                         pagination.nextPage();
                     };
-                });
+                });*@
         }
 
         function createMarkers(places) {
