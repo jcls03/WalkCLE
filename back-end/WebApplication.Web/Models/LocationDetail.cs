@@ -41,12 +41,22 @@ namespace WebApplication.Web.Models
         public string Zip { get; set; }
 
         /// <summary>
-        /// Type of Location
+        /// Type searched for 
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// User neterd start location
+        /// Latitude of Location
+        /// </summary>
+        public double Latitude { get; set; }
+
+        /// <summary>
+        /// Longitude of Location
+        /// </summary>
+        public double Longitude { get; set; }
+
+        /// <summary>
+        /// User entered start location
         /// </summary>
         public string Origin { get; set; }
 

@@ -40,6 +40,21 @@ VALUES ('Tech Elevator', 'Tech Elevator is the PREMIER coding boot camp in North
 ('Stan Hywet Hall & Gardens', 'Historical Landmark', '714 N Portage Path', 'Akron', 'OH', '44303', 41.116835, -81.548893, 'https://www.stanhywet.org/', 'https://www.facebook.com/stanhywet/', 'https://twitter.com/stanhywet?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor', 'https://www.instagram.com/stanhywet/?hl=en');
 
 DECLARE @techElevatorId int = (SELECT id FROM locations WHERE [name]='Tech Elevator');
+DECLARE @severanceHallId int = (SELECT id FROM locations WHERE [name]='Severance Hall');
+DECLARE @rockNRollId int = (SELECT id FROM locations WHERE [name]='Rock & Roll Hall of Fame');
+DECLARE @artMuseumId int = (SELECT id FROM locations WHERE [name]='Cleveland Museum of Art');
+DECLARE @historyMuseumId int = (SELECT id FROM locations WHERE [name]='Cleveland Museum of Natural History');
+DECLARE @scienceCenterId int = (SELECT id FROM locations WHERE [name]='Great Lakes Science Center');
+DECLARE @firstEnergyId int = (SELECT id FROM locations WHERE [name]='First Energy Stadium');
+DECLARE @progressiveFieldId int = (SELECT id FROM locations WHERE [name]='Progressive Field');
+DECLARE @quickenLoansId int = (SELECT id FROM locations WHERE [name]='Quicken Loans Arena');
+DECLARE @cedarPointId int = (SELECT id FROM locations WHERE [name]='Cedar Point');
+DECLARE @hardRockId int = (SELECT id FROM locations WHERE [name]='Hard Rock Rocksino');
+DECLARE @playhouseSquareId int = (SELECT id FROM locations WHERE [name]='Playhouse Square');
+DECLARE @valleyParkId int = (SELECT id FROM locations WHERE [name]='Cuyahoga Valley National Park');
+DECLARE @westsideMarketId int = (SELECT id FROM locations WHERE [name]='Westside Market');
+DECLARE @botanicalGardensId int = (SELECT id FROM locations WHERE [name]='Cleveland Botanical Gardens');
+DECLARE @stanHywetId int = (SELECT id FROM locations WHERE [name]='Stan Hywet Hall & Gardens');
 
 
 INSERT INTO location_venue_types (location_id, venue_type_id)
@@ -49,12 +64,7 @@ VALUES (@techElevatorId,
 (SELECT id FROM venue_types WHERE [type]='school'));
 
 
---INSERT INTO hours_of_operation (location_id, day_id, open_time, close_time)
---VALUES (@techElevatorId, 1, 09, 17), 
---(@techElevatorId, 2, 09, 17),
---(@techElevatorId, 3, 09, 17), 
---(@techElevatorId, 4, 09, 17)
---;
+
 
 
 COMMIT TRANSACTION;

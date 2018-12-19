@@ -28,7 +28,11 @@ namespace WebApplication.Web.Controllers
         [HttpGet]
         public IActionResult Map(string origin, string type)
         {
-            var location = new LocationDetail { Origin = origin, Type = type };
+            var places = locationDetailDAL.GetAllLocations();
+            var lats = locationDetailDAL.Latitudes(places);
+            var longs = locationDetailDAL.Longitudes(places);
+            var names = locationDetailDAL.Names(places);
+            var location = new MapStuff { Origin = origin, Type = type, Latitues = lats, Longitudes = longs, Names = names };
 
             return View(location);
 

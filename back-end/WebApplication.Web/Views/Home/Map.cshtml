@@ -1,4 +1,4 @@
-﻿@model LocationDetail
+﻿@model MapStuff
 @{
     ViewData["Title"] = "Map";
 
@@ -56,7 +56,25 @@
 
     <script>
         var map;
-        // var cleveland = { lat: 41.4993, lng: -81.6944 };   
+        var cleveland = { lat: 41.4993, lng: -81.6944 };   
+
+        var latArray = [];
+        @foreach (var place in Model.Latitues)
+        {
+            @:latArray.push("@place");
+        }
+        var longArray = [];
+        @foreach (var place in Model.Longitudes)
+        {
+            @:longArray.push("@place");
+        }
+        var nameArray = [];
+        @foreach (var place in Model.Names)
+        {
+            @:nameArray.push("@place");
+        }
+
+        var bucket = "~back-end/WebApplication.Web/wwwroot/images/Bucket.png";
 
         var origin = "@Model.Origin";
         var originLat;
@@ -123,6 +141,21 @@
                 map.panTo(lastValidCenter);
             });
 
+            for (var i = 0; i < latArray.length; i++) {
+                var myLatlng = new google.maps.LatLng(latArray[i], longArray[i]);
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    //icon: bucket,
+                    title: nameArray[i]
+                });
+
+                marker.setMap(map)
+
+            }
+            
+
             // Create the places service.
             var service = new google.maps.places.PlacesService(map);
             var getNextPage = null;
@@ -175,6 +208,8 @@
                 bounds.extend(place.geometry.location);
             }
             map.fitBounds(bounds);
+
+            
         }
 
     </script>

@@ -37,6 +37,8 @@ namespace WebApplication.Web.DAL
                         locationDetail.City = Convert.ToString(reader["city"]);
                         locationDetail.State = Convert.ToString(reader["district"]);
                         locationDetail.Zip = Convert.ToString(reader["zip"]);
+                        locationDetail.Latitude = Convert.ToDouble(reader["latitude"]);
+                        locationDetail.Longitude = Convert.ToDouble(reader["longitude"]);
                         locationDetail.WebLink = Convert.ToString(reader["web_link"]);
                         locationDetail.FbLink = Convert.ToString(reader["fb_link"]);
                         locationDetail.TwLink = Convert.ToString(reader["tw_link"]);
@@ -53,7 +55,7 @@ namespace WebApplication.Web.DAL
             return locationDetail;
         }
 
-        public IList<LocationDetail> GetAllLocations(string locationType)
+        public IList<LocationDetail> GetAllLocations()
         {
 
             IList<LocationDetail> locationsOnMap = new List<LocationDetail>();
@@ -63,7 +65,7 @@ namespace WebApplication.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT name, street, city, district, zip, [type] FROM locations INNER JOIN location_venue_types ON location_venue_types.location_id = locations.id INNER JOIN venue_types ON venue_types.id = location_venue_types.venue_type_id;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT *  FROM locations;", conn);
                     //cmd.Parameters.AddWithValue("@xx", locationType);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -72,12 +74,19 @@ namespace WebApplication.Web.DAL
                         LocationDetail locations = new LocationDetail()
                         {
                             Name = Convert.ToString(reader["name"]),
+                            Description = Convert.ToString(reader["description"]),
                             City = Convert.ToString(reader["city"]),
                             Street = Convert.ToString(reader["street"]),
                             State = Convert.ToString(reader["district"]),
-                            // Type = Convert.ToString(reader["type"]),
                             Zip = Convert.ToString(reader["zip"]),
+                            Latitude = Convert.ToDouble(reader["latitude"]),
+                            Longitude = Convert.ToDouble(reader["longitude"]),
+                            WebLink = Convert.ToString(reader["web_link"]),
+                            FbLink = Convert.ToString(reader["fb_link"]),
+                            TwLink = Convert.ToString(reader["tw_link"]),
+                            IgLink = Convert.ToString(reader["ig_link"])
                         };
+
                         locationsOnMap.Add(locations);
                     }
                 }
@@ -90,6 +99,42 @@ namespace WebApplication.Web.DAL
             return locationsOnMap;
         }
 
+        public List<double> Latitudes(IList<LocationDetail> locationDetails)
+        {
+            List<double> lats = new List<double>();
 
+            foreach (var location in locationDetails)
+            {
+                double lat = location.Latitude;
+                lats.Add(lat);
+            }           
+            
+            return lats;
+        }
+
+        public List<double> Longitudes(IList<LocationDetail> locationDetails)
+        {
+            List<double> longs = new List<double>();
+
+            foreach (var location in locationDetails)
+            {
+                double longitude = location.Longitude;
+                longs.Add(longitude);
+            }
+
+            return longs;
+        }
+
+        public List<string> Names(IList<LocationDetail> locationDetails)
+        {
+            List<string> names = new List<string>();
+
+            foreach (var location in locationDetails)
+            {
+                string name = location.Name;
+                names.Add(name);
+            }
+            return names;
+        }
     }
 }
