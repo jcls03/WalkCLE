@@ -164,23 +164,28 @@
 
         <div class="entryField">
             
-                <form asp-controller="home" asp-action="map" method="get">
-                    <label asp-for="Type">What are you looking for?</label>
-                    <input style="color:black;" asp-for="Type" />
-            
-                    <br />
-                
-                    <label>Where are you?</label>
-                    <input style="color:black;"/>
-            
-                    <br />
-            
+            <form asp-controller="home" asp-action="map" method="get">
+
+                <label asp-for="Type">What are you looking for?</label>
+                <select asp-for="Type" asp-items="LocationDetail.TypeList" style="color:black;"></select>
+
+                <br />
+                <br />
+                <br />
+
+                <label asp-for="Origin">Where are you?</label>
+                <input asp-for="Origin" type="text" style="color:black;" />
+
+                <br />
+                <br />
+                <br />
+
                 <button class="letsGo">
                     <i class="glyphicon glyphicon-search"></i>
-                    <br />
+                   
                     <span class="buttonCopy">Let's Go!</span>
                 </button>
-                </form>
+            </form>
             
         </div>
 
