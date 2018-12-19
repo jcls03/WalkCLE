@@ -5,7 +5,9 @@
 
 
 <style>
-
+    body {
+        color: white;
+    }
 
     img {
         /* Add the blur effect */
@@ -26,40 +28,114 @@
         left: 0;
         min-width: 100%;
         min-height: 100%;
+        filter: brightness(.7);
     }
 
     .frontGrid {
-        display:grid;
-        z-index: 2;
-        grid-template-rows:1fr 1fr 1fr;
-        grid-template-columns:1fr;
-        grid-template-areas:
-            "text"
-            "entryField"
-            "."
+        display: grid;
+        position: absolute;
+        grid-gap: 10px;
+        width: auto;
+        height: 90%;
+        z-index: 1;
+        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-columns: 10% 25% 20% 25% 10%;
+        grid-template-areas: ". . . . ." ". title title about ." ". entryField optionSelect optionSelect ." ". . . . ."
+    }
+
+    .buttons > button {
+        background-color: cornflowerblue;
+        border: none;
+        color: white;
+        padding: 4px 21px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        height: 66px;
+        width: 88px;
+    }
+
+    .title {
+        grid-area: title;
+        font-size: 99px;
+        width: 100%;
+    }
+
+    .about {
+        grid-area: about;
+        text-align: center;
+        padding-top:38px;
+    }
+
+    .optionSelect {
+        display: grid;
+        grid-area: optionSelect;
+        border: 3px solid rgba(25, 25, 25, .5);
+        width: auto;
+        padding: 20px;
+        background: rgba(25, 25, 25, .5);
+        border-radius: 3px;
+        grid-template-rows: 1fr 2fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "top" "buttons" "submit"
+    }
+
+    .top {
+        grid-area: top;
+    }
+
+    .buttons {
+        grid-area: buttons;
+        justify-content: center;
+    }
+
+    .submit {
+        grid-area: submit;
     }
 
     .entryField {
         border: 3px solid rgba(25, 25, 25, .5);
-        position: absolute;
-        width: 50%;
+        width: auto;
         padding: 20px;
         background: rgba(25, 25, 25, .5);
         border-radius: 3px;
+        grid-area: entryField;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "looking" "around" "letsGo"
+    }
+
+    .looking {
+        grid-area: looking;
+    }
+
+    .around {
+        grid-area: around;
+    }
+
+    .letsGo {
+        grid-area: letsGo;
+        color:black;
     }
 
     button {
-        border-radius: 9px;
-        margin: 5px;
+        border-radius: 3px; 
+        margin-top: 5px;
+        margin-right: 1px;
+        color:black;
     }
 
-    span {
-        font-size: 18px;
+    .submit > button {
+        position: relative;
+        left: 40%;
     }
 
-    head {
-        position: center;
-    }
+
+
 </style>
 
 <html>
@@ -69,37 +145,66 @@
 
     <img src="~/images/DimMapBackground.png" id="bg" />
     
-    <div class="Icons">
-        <button class="foodAndDrink"></button>
-        <button class="museum"></button>
-        <button class="theater"></button>
-        <button class="park"></button>
-        <button class="sport"></button>
-        <button class="music"></button>
-        <button class="landmark"></button>
-    </div>
+
 
     <div class="frontGrid">
-        <div class="text">
-            <h2>CLEWalks</h2>
-            <h4>Need help getting around? Let us be your guide!</h4>
-        </div>
-        <div class="entryField">
-            <form asp-controller="home" asp-action="map" method="get">
-                <label asp-for="Type"></label>
-                <input asp-for="Type" />
-
-
-                <p> near </p>
-                <input type="text" value="Tech Elevator" />
+        <div class="about">
+            <h4>
+                Need help getting around?
                 <br />
-                <button>
+                Let us be your guide! 
+                <br />
+                A map of Cleveland!
+            </h4>
+        </div>
+
+        <div class="title" style="font-size:110px; font-style:italic; font-family:'Cambria Math';">
+            WalkCLE
+        </div>
+
+        <div class="entryField">
+            
+                <form asp-controller="home" asp-action="map" method="get">
+                    <label asp-for="Type">What are you looking for?</label>
+                    <input style="color:black;" asp-for="Type" />
+            
+                    <br />
+                
+                    <label>Where are you?</label>
+                    <input style="color:black;"/>
+            
+                    <br />
+            
+                <button class="letsGo">
                     <i class="glyphicon glyphicon-search"></i>
                     <br />
                     <span class="buttonCopy">Let's Go!</span>
                 </button>
-            </form>
+                </form>
+            
         </div>
+
+
+
+        <div class="optionSelect">
+            <div class="top">
+                <strong>
+                    In a hurry? Quick options!
+                </strong>
+            </div>
+
+            <div class="buttons" style="padding-bottom: 20px;">
+                <button ></button>
+                <button ></button>
+                <button ></button>
+                <button ></button>
+                <button ></button>
+                <button ></button>
+                <button ></button>
+                <button></button>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
