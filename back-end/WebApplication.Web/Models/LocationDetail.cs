@@ -46,6 +46,7 @@ namespace WebApplication.Web.Models
         public string Type { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// Latitude of Location
         /// </summary>
         public double Latitude { get; set; }
@@ -57,6 +58,9 @@ namespace WebApplication.Web.Models
 
         /// <summary>
         /// User entered start location
+=======
+        /// User enterd start location
+>>>>>>> 759a8de065dc6cd9749d4b6c15447eb2402995ce
         /// </summary>
         public string Origin { get; set; }
 
@@ -84,7 +88,7 @@ namespace WebApplication.Web.Models
         [DisplayName("-- Select an activity --")]
         public static IList<SelectListItem> TypeList = new List<SelectListItem>()
         {
-            new SelectListItem() { Text = "Restaurants and Bars", Value = "bar" },
+            
 
             new SelectListItem() { Text = "Museums", Value = "museum" },
 
