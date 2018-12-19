@@ -46,7 +46,7 @@ namespace WebApplication.Web.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// User neterd start location
+        /// User enterd start location
         /// </summary>
         public string Origin { get; set; }
 
