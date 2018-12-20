@@ -63,12 +63,14 @@
         grid-area: title;
         font-size: 99px;
         width: 100%;
+        color: #E6D5A5;
     }
 
     .about {
         grid-area: about;
         text-align: center;
-        padding-top:38px;
+        padding-top: 38px;
+        color: #E6D5A5;
     }
 
     .optionSelect {
@@ -77,7 +79,7 @@
         border: 3px solid rgba(25, 25, 25, .5);
         width: auto;
         padding: 20px;
-        background: rgba(25, 25, 25, .5);
+        background: rgba(52, 41, 7, .5);
         border-radius: 3px;
         grid-template-rows: 1fr 2fr ;
         grid-template-columns: 1fr;
@@ -129,10 +131,10 @@
         margin-top: 5px;
         margin-right: 1px;
         padding: 10px !important;
-        background-color: #EBA59D !important;
+        background-color: #E6D5A5 !important;
         /*color:black;*/
         font-weight: bold;
-        box-shadow:inset;
+        box-shadow: inset;
         text-align: center;
     }
     button:hover {
@@ -149,6 +151,14 @@
         padding-bottom: 0px;
         margin: auto;
         width: 50%;
+    }
+
+    #origin {
+        color: #E6D5A5;
+    }
+
+    .data-entry {
+        color: #E6D5A5;
     }
 
 
@@ -178,33 +188,6 @@
             WalkCLE
         </div>
 
-        @*<div class="entryField">
-            
-            <form asp-controller="home" asp-action="map" method="get">
-
-                <label asp-for="Type">What are you looking for?</label>
-                <select asp-for="Type" asp-items="LocationDetail.TypeList" style="color:black;"></select>
-
-                <br />
-                <br />
-                <br />
-
-                <label asp-for="Origin">Where are you?</label>
-                <input asp-for="Origin" type="text" style="color:black;" />
-
-                <br />
-                <br />
-                <br />
-
-                <button class="letsGo">
-                    <i class="glyphicon glyphicon-search"></i>
-                   
-                    <span class="buttonCopy">Let's Go!</span>
-                </button>
-            </form>
-            
-        </div>*@
-
 
 
         <div class="optionSelect">
@@ -216,23 +199,21 @@
 
             <div class="buttons" style="padding-bottom: 20px;">
                 <form asp-controller="home" asp-action="map" method="get">
-                    <label asp-for="Origin" id="locationEntry">Where are you?</label>
+                    <label asp-for="Origin" class="data-entry" id="locationEntry">Tell us where you are:</label>
+                    <br /><br />
+                    <input asp-for="Origin" type="text" style="color:black;" required /><br />
                     <br />
-                    <input asp-for="Origin" type="text" style="color:black;" required />
-
+                    <p class="data-entry"><strong>And what you are looking for:</strong></p>
                     @*<label asp-for="Type">What are you looking for?</label>
         <select asp-for="Type" asp-items="LocationDetail.TypeList" style="color:black;"></select>*@
 
-                    <br />
-                    
                     <button type="submit" name="Type" value="bar">Bar</button>
                     <button type="submit" name="Type" value="museum">Museums</button>
                     <button type="submit" name="Type" value="cinema">Theater</button>
                     <button type="submit" name="Type" value="stadium">Sports</button>
-                    <button type="submit" name="Type" value="music">Music</button>
                     <button type="submit" name="Type" value="park">Parks</button>
                     <button type="submit" name="Type" value="historical site">Historical</button>
-                    
+
                 </form>
 
                 @*<form asp-controller="home" asp-action="map" method="get">
