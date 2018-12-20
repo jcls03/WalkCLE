@@ -32,12 +32,28 @@
 
         .searchBar {
             grid-area: searchBar;
-            background: black;
             height: auto;
             width: 20%;
-            position:absolute;
-            opacity: .8;
+            position: absolute;
+            opacity: .9;
             z-index: 2;
+            background-color: var(--black);
+            color: var(--blue);
+            font-weight: bold;
+            padding: 10px;
+            line-height: 1.45em;
+        }
+
+        .searchBar a {
+            color: var(--blue);
+        }
+
+        .searchBar h2 {
+            color: var(--tan);
+        }
+
+        .searchBar button {
+            color: var(--black);
         }
 
         .searchBarInfo {
@@ -50,7 +66,9 @@
             display:none;
         }
 
-
+        .body-content {
+            margin: 0;
+        }
 
     </style>
 </head>
@@ -198,7 +216,7 @@
                 });
 
                 var li = document.createElement('li');
-                li.textContent = place.name;
+                li.innerHTML = `<a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}">${place.name}</a>`;
                 placesList.appendChild(li);
 
                 bounds.extend(place.geometry.location);

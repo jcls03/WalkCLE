@@ -3,7 +3,15 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: 'Cambria Math'
+    /*font-family: 'Cambria Math';*/
+    font-family: 'Open Sans', sans-serif;
+    --blue: #14A395;
+    --black: #2E2B21;
+    --brown: #57440B;
+    --dark-brown: #342907;
+    --neon-pink: #FF1F53;
+    --pastel-pink: #EBA59D;
+    --tan: #E6D5A5;
 }
 
 /* Wrapping element */
@@ -36,3 +44,18 @@ body {
     }
 }
 
+.navbar {
+    background-color: var(--black) !important
+}
+.navbar a {
+    color: var(--tan) !important;
+}
+
+.navbar a:hover {
+    color: var(--blue) !important;
+}
+
+button {
+    backgounrd-color: var(--pastel-pink) !important;
+    color: var(--black) !important;
+}
