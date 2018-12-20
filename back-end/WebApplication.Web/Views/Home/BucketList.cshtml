@@ -130,16 +130,14 @@
                 });
 
                 marker.setMap(map)
-
-                marker.linkUrl = 'https://google.com';
+                var address = nameArray[i].replace(/ /g, '%20');
+                marker.linkUrl = 'https://localhost:44391/Home/Detail?locationname=' + address;
 
                 marker.addListener('click', function () {
 
                     window.location = this.linkUrl;
 
                 });
-
-                //https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Tech%20Elevator&inputtype=textquery&key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw
 
             }
         }
