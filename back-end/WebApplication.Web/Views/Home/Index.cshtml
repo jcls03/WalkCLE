@@ -78,9 +78,9 @@
         padding: 20px;
         background: rgba(25, 25, 25, .5);
         border-radius: 3px;
-        grid-template-rows: 1fr 2fr 1fr;
+        grid-template-rows: 1fr 2fr ;
         grid-template-columns: 1fr;
-        grid-template-areas: "top" "buttons" "submit"
+        grid-template-areas: "top" "buttons"
     }
 
     .top {
@@ -135,6 +135,12 @@
         left: 40%;
     }
 
+    #locationEntry {
+        padding-top: 20px;
+        padding-bottom: 0px;
+        margin: auto;
+        width: 50%;
+    }
 
 
 </style>
@@ -201,7 +207,8 @@
 
             <div class="buttons" style="padding-bottom: 20px;">
                 <form asp-controller="home" asp-action="map" method="get">
-                    <label asp-for="Origin">Where are you?</label>
+                    <label asp-for="Origin" id="locationEntry">Where are you?</label>
+                    <br />
                     <input asp-for="Origin" type="text" style="color:black;" required />
 
                     @*<label asp-for="Type">What are you looking for?</label>
@@ -212,10 +219,10 @@
                     <button asp-for="Type" value="bar">Bars</button>
                     <button asp-for="Type" value="museum">Museums</button>
                     <button asp-for="Type" value="cinema">Theater</button>
-                    <button asp-for="Type" value="stadium">Sports Fields</button>
-                    <button asp-for="Type" value="music">Music Venues</button>
+                    <button asp-for="Type" value="stadium">Sports</button>
+                    <button asp-for="Type" value="music">Music</button>
                     <button asp-for="Type" value="park">Parks</button>
-                    <button asp-for="Type" value="historical site">Historical Landmarks</button>
+                    <button asp-for="Type" value="historical site">Historical</button>
                 </form>
                 @*<form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="museum" />
