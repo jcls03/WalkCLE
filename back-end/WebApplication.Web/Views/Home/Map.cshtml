@@ -198,7 +198,7 @@
                 });
 
                 var li = document.createElement('li');
-                li.textContent = place.name;
+                li.innerHTML = `<a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}">${place.name}</a>`;
                 placesList.appendChild(li);
 
                 bounds.extend(place.geometry.location);
