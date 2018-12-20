@@ -47,6 +47,7 @@ CREATE TABLE locations
 	tw_link		varchar(100)	null,
 	ig_link		varchar(100)	null,
 	image_path	varchar(50)		null,
+	place_id	varchar(50)		null,
 	
 	constraint pk_locations primary key (id)
 );
