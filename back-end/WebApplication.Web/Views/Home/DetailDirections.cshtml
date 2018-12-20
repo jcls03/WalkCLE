@@ -66,6 +66,7 @@
             grid-template-areas: "right-panel map";
             grid-row-gap: 20px;
             grid-column-gap: 50px;
+            padding-bottom: 20px;
         }
 
         #right-panel {
@@ -84,10 +85,7 @@
         <input type="radio" name="type" id="changemode-walking" checked="checked">
         <label for="changemode-walking">Walking</label>
 
-         @*<input type="radio" name="type" id="changemode-transit">
-            <label for="changemode-transit">Transit</label>*@
-
-        <input type="radio" name="type" id="changemode-driving">
+         <input type="radio" name="type" id="changemode-driving">
         <label for="changemode-driving">Driving</label>
     </div>
     <div id="layout">
@@ -107,7 +105,10 @@
                 center: { lat: 41.503756, lng: -81.638892 },
                 zoom: 13
             });
-
+            var marker = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(41.501252, -81.680757)
+            });
             new AutocompleteDirectionsHandler(map);
         }
 
@@ -115,10 +116,8 @@
         function AutocompleteDirectionsHandler(map) {
             this.map = map;
             this.originPlaceId = null;
-            this.destinationPlaceId = null;
             this.travelMode = 'WALKING';
             var originInput = document.getElementById('origin-input');
-            var destinationInput = document.getElementById('destination-input');
             var modeSelector = document.getElementById('mode-selector');
             this.directionsService = new google.maps.DirectionsService;
             this.directionsDisplay = new google.maps.DirectionsRenderer;
@@ -127,18 +126,14 @@
 
             var originAutocomplete = new google.maps.places.Autocomplete(
                 originInput, { placeIdOnly: true });
-            var destinationAutocomplete = new google.maps.places.Autocomplete(
-                destinationInput, { placeIdOnly: true });
+
 
             this.setupClickListener('changemode-walking', 'WALKING');
-            //this.setupClickListener('changemode-transit', 'TRANSIT');
             this.setupClickListener('changemode-driving', 'DRIVING');
 
             this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-            this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
 
             this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-            this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
             this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
         }
 
@@ -173,14 +168,14 @@
         };
 
         AutocompleteDirectionsHandler.prototype.route = function () {
-            if (!this.originPlaceId || !this.destinationPlaceId) {
+            if (!this.originPlaceId) {
                 return;
             }
             var me = this;
 
             this.directionsService.route({
                 origin: { 'placeId': this.originPlaceId },
-                destination: { 'placeId': this.destinationPlaceId },
+                destination: new google.maps.LatLng(41.501252, -81.680757),
                 travelMode: this.travelMode
             }, function (response, status) {
                 if (status === 'OK') {

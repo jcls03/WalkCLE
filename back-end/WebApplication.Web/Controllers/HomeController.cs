@@ -50,9 +50,19 @@ namespace WebApplication.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+         
 
         public IActionResult Directions()
         {
+            return View();
+        }
+
+        public IActionResult DetailDirections()
+        {
+            // currently hard coded for destination            
+            // Needs Destination lat/long passed into lines 110 an 178 
+            // to be dynamic
+
             return View();
         }
 
