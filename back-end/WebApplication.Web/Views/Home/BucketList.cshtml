@@ -1,0 +1,128 @@
+﻿@model MapStuff
+@{
+    ViewData["Title"] = "BucketList";
+}
+
+<h2>BucketList</h2>
+
+<html>
+<head>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 120px;
+            /* The width is the width of the web page */
+        }
+
+        .mapGrid {
+            display: grid;
+            position: relative;
+            z-index: 1; /* The z-index should be higher than Google Maps */
+            width: auto;
+            height: auto;
+            opacity: .45; /* Set the opacity for a slightly transparent Google Form */
+            color: white;
+            grid-template-columns: 2fr 5fr;
+            grid-template-areas: "searchBar the_void"
+        }
+
+        .searchBar {
+            grid-area: searchBar;
+            background: black;
+            height: auto;
+            width: 20%;
+            position: absolute;
+            opacity: .8;
+            z-index: 2;
+        }
+
+        .searchBarInfo {
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+        var cleveland = { lat: 41.4993, lng: -81.6944 };
+
+        var latArray = [];
+        @foreach (var place in Model.Latitudes)
+        {
+            @:latArray.push("@place");
+        }
+        var longArray = [];
+        @foreach (var place in Model.Longitudes)
+        {
+            @:longArray.push("@place");
+        }
+        var nameArray = [];
+        @foreach (var place in Model.Names)
+        {
+            @:nameArray.push("@place");
+        }
+
+        //var bucket = "~back-end/WebApplication.Web/wwwroot/images/Bucket.png";
+
+        function initMap() {
+
+            // Create the map.
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: cleveland,
+                zoom: 15,
+                minZoom: 11,
+                maxZoom: 18,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        stylers: [{ visibility: 'off' }]
+                    },
+                    {
+                        featureType: 'transit',
+                        elementType: 'labels.icon',
+                        stylers: [{ visibility: 'off' }]
+                    }
+                ]
+            });
+
+            // Bounds for WalkCLE
+            var allowedBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(41.459287, -81.716830),
+                new google.maps.LatLng(41.584380, -81.575907));
+
+            var lastValidCenter = map.getCenter();
+
+            google.maps.event.addListener(map, 'center_changed', function () {
+                if (allowedBounds.contains(map.getCenter())) {
+                    // still within valid bounds, so save the last valid position
+                    lastValidCenter = map.getCenter();
+                    return;
+                }
+
+                // not valid anymore => return to last valid position
+                map.panTo(lastValidCenter);
+            });
+
+            for (var i = 0; i < latArray.length; i++) {
+                var myLatlng = new google.maps.LatLng(latArray[i], longArray[i]);
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    //icon: bucket,
+                    title: nameArray[i]
+                });
+
+                marker.setMap(map)
+
+            }
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw&libraries=places&callback=initMap" async defer></script>
+</body>
+</html>

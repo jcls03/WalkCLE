@@ -14,10 +14,7 @@ VALUES (1, 'Mon', 'Monday'), (2, 'Tues', 'Tuesday'),
 (5, 'Fri', 'Friday'), (6, 'Sat', 'Saturday'),
 (7, 'Sun', 'Sunday');
 
-INSERT INTO venue_types ([type])
-VALUES ('bar'), ('restaurant'), ('landmark'),
-('museum'), ('cinema'), ('theater'), 
-('stadium'), ('school'), ('park');
+
 
 INSERT INTO locations ([name], [description], street, city, district, zip, latitude, longitude, web_link, fb_link, tw_link, ig_link)
 VALUES ('Tech Elevator', 'Tech Elevator is the PREMIER coding boot camp in North East Ohio.  Home to awesome staff like Josh Tucholski, and Frank Fella.  Fondeded by none other than Anthony Hughes and David Wintrich.  It has launched the careers of such programming giants as Kevin Batel, Jess Cray-Smith, Joe D''Antonio and Adam W. Seal.', '7100 Euclid Ave #140', 'Cleveland', 'OH', '44103', 41.503756, -81.638892, 'https://www.techelevator.com/', 'https://www.facebook.com/techelevator/', 'https://twitter.com/Tech_Elevator', 'https://www.instagram.com/techelevator/?hl=en'),
@@ -54,19 +51,45 @@ DECLARE @playhouseSquareId int = (SELECT id FROM locations WHERE [name]='Playhou
 DECLARE @valleyParkId int = (SELECT id FROM locations WHERE [name]='Cuyahoga Valley National Park');
 DECLARE @westsideMarketId int = (SELECT id FROM locations WHERE [name]='Westside Market');
 DECLARE @botanicalGardensId int = (SELECT id FROM locations WHERE [name]='Cleveland Botanical Gardens');
-DECLARE @stanHywetId int = (SELECT id FROM locations WHERE [name]='Stan Hywet Hall & Gardens');
+DECLARE @stanHywettechdsdId int = (SELECT id FROM locations WHERE [name]='Stan Hywet Hall & Gardens');
 
 
 INSERT INTO location_venue_types (location_id, venue_type_id)
 VALUES (@techElevatorId,
 (SELECT id FROM venue_types WHERE [type]='landmark')),
 (@techElevatorId,
-(SELECT id FROM venue_types WHERE [type]='school'));
+(SELECT id FROM venue_types WHERE [type]='school')),
+(@severanceHallId,
+(SELECT id FROM venue_types WHERE [type]='venue')),
+(@rockNRollId,
+(SELECT id FROM venue_types WHERE [type]='museum')),
+(@rockNRollId,
+(SELECT id FROM venue_types WHERE [type]='landmark')),
+(@artMuseumId,
+(SELECT id FROM venue_types WHERE [type]='museum')),
+(@historyMuseumId,
+(SELECT id FROM venue_types WHERE [type]='museum')),
+(@scienceCenterId,
+(SELECT id FROM venue_types WHERE [type]='museum')),
+(@progressiveFieldId,
+(SELECT id FROM venue_types WHERE [type]='stadium')),
+(@firstEnergyId,
+(SELECT id FROM venue_types WHERE [type]='stadium')),
+(@quickenLoansId,
+(SELECT id FROM venue_types WHERE [type]='stadium')),
+(@cedarPointId,
+(SELECT id FROM venue_types WHERE [type]='landmark')),
 
 
 
+INSERT INTO venue_types ([type])
+VALUES ('bar'), ('restaurant'), ('landmark'),
+('museum'), ('cinema'), ('theater'), 
+('stadium'), ('school'), ('park'), ('venue');
 
 
 COMMIT TRANSACTION;
 
 SELECT * FROM locations
+
+SELECT name, latitude, longitude FROM locations

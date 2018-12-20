@@ -32,7 +32,7 @@ namespace WebApplication.Web.Controllers
             var lats = locationDetailDAL.Latitudes(places);
             var longs = locationDetailDAL.Longitudes(places);
             var names = locationDetailDAL.Names(places);
-            var location = new MapStuff { Origin = origin, Type = type, Latitues = lats, Longitudes = longs, Names = names };
+            var location = new MapStuff { Origin = origin, Type = type, Latitudes = lats, Longitudes = longs, Names = names };
 
             return View(location);
 
@@ -56,9 +56,15 @@ namespace WebApplication.Web.Controllers
             return View();
         }
 
-        public IActionResult Practice()
+        public IActionResult BucketList()
         {
-            return View();
+            var places = locationDetailDAL.GetAllLocations();
+            var lats = locationDetailDAL.Latitudes(places);
+            var longs = locationDetailDAL.Longitudes(places);
+            var names = locationDetailDAL.Names(places);
+            var location = new MapStuff {  Latitudes = lats, Longitudes = longs, Names = names };
+
+            return View(location);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WebApplication.Web.Models
         /// <summary>
         /// Bucket List Latitudes
         /// </summary>
-        public List<double> Latitues { get; set; }
+        public List<double> Latitudes { get; set; }
 
         /// <summary>
         /// Bucket List Longitudes

@@ -150,11 +150,11 @@
     <div class="frontGrid">
         <div class="about">
             <h4>
-                Need help getting around?
+                New to Cleveland?
                 <br />
-                Let us be your guide! 
+                Want to Know What's Nearby?
                 <br />
-                A map of Cleveland!
+                Let Us Show You Around!
             </h4>
         </div>
 
@@ -200,18 +200,9 @@
 
             <div class="buttons" style="padding-bottom: 20px;">
                 <form asp-controller="home" asp-action="map" method="get">
-<<<<<<< HEAD
                     <button type="submit" asp-for="Type" value="bar">Bars</button>
                 </form>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button ></button>
-                <button></button>
-=======
+                <form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="bar" />
                     <button>Bars</button>
                 </form>
@@ -239,7 +230,6 @@
                     <input type="hidden" asp-for="Type" value="historical site" />
                     <button>Historical Landmarks</button>
                 </form>
->>>>>>> 759a8de065dc6cd9749d4b6c15447eb2402995ce
             </div>
         </div>
     </div>

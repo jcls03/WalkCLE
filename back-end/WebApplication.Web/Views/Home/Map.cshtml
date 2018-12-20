@@ -61,29 +61,12 @@
 
     <script>
         var map;
-<<<<<<< HEAD
         var cleveland = { lat: 41.4993, lng: -81.6944 };   
 
-        var latArray = [];
-        @foreach (var place in Model.Latitues)
-        {
-            @:latArray.push("@place");
-        }
-        var longArray = [];
-        @foreach (var place in Model.Longitudes)
-        {
-            @:longArray.push("@place");
-        }
-        var nameArray = [];
-        @foreach (var place in Model.Names)
-        {
-            @:nameArray.push("@place");
-        }
+        
 
         var bucket = "~back-end/WebApplication.Web/wwwroot/images/Bucket.png";
 
-=======
->>>>>>> 759a8de065dc6cd9749d4b6c15447eb2402995ce
         var origin = "@Model.Origin";
         var originLat;
         var originLng;  
@@ -125,7 +108,18 @@
                 center: { lat: originLat, lng: originLng },
                 zoom: 15,
                 minZoom: 11,
-                maxZoom: 18
+                maxZoom: 18,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        stylers: [{ visibility: 'off' }]
+                    },
+                    {
+                        featureType: 'transit',
+                        elementType: 'labels.icon',
+                        stylers: [{ visibility: 'off' }]
+                    }
+                ]
             });
 
 
@@ -147,19 +141,7 @@
                 map.panTo(lastValidCenter);
             });
 
-            for (var i = 0; i < latArray.length; i++) {
-                var myLatlng = new google.maps.LatLng(latArray[i], longArray[i]);
 
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    //icon: bucket,
-                    title: nameArray[i]
-                });
-
-                marker.setMap(map)
-
-            }
             
 
             // Create the places service.
@@ -172,16 +154,16 @@
             };
 
             // Perform a nearby search.
-            var request = {
-                location: cleveland,
-                radius: '200',
-                query: 'theater'
-            }
+            //var request = {
+            //    location: cleveland,
+            //    radius: '200',
+            //    query: 'theater'
+            //}
 
-            service = new google.maps.places.PlacesService(map)
-            service.textSearch(request, callback);
+            //service = new google.maps.places.PlacesService(map)
+            //service.textSearch(request, callback);
 
-            @*service.nearbySearch(
+            service.nearbySearch(
 
                 { location: { lat: originLat, lng: originLng }, rankBy: google.maps.places.RankBy.DISTANCE, type: ['@Model.Type'] },
                 function (results, status, pagination) {
@@ -192,7 +174,7 @@
                     getNextPage = pagination.hasNextPage && function () {
                         pagination.nextPage();
                     };
-                });*@
+                });
         }
 
         function createMarkers(places) {
