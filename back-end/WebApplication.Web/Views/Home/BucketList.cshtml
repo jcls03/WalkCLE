@@ -10,9 +10,12 @@
     <style>
         /* Set the size of the div element that contains the map */
         #map {
-            height: 400px;
+            height: 100%;
             width: 100%;
-            margin-top: 120px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
             /* The width is the width of the web page */
         }
 
@@ -50,6 +53,7 @@
     <script>
         var map;
         var cleveland = { lat: 41.4993, lng: -81.6944 };
+        var OEC = { lat: 41.241804, lng: -81.637270 };
 
         var latArray = [];
         @foreach (var place in Model.Latitudes)
@@ -67,15 +71,22 @@
             @:nameArray.push("@place");
         }
 
-        //var bucket = "~back-end/WebApplication.Web/wwwroot/images/Bucket.png";
+        var bucket = "~back-end/WebApplication.Web/wwwroot/images/Bucket.png";
+        var image = {
+            url: bucket,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+        };
 
         function initMap() {
 
             // Create the map.
             map = new google.maps.Map(document.getElementById('map'), {
-                center: cleveland,
-                zoom: 15,
-                minZoom: 11,
+                center: OEC,
+                zoom: 10,
+                minZoom: 10,
                 maxZoom: 18,
                 styles: [
                     {
@@ -92,8 +103,8 @@
 
             // Bounds for WalkCLE
             var allowedBounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(41.459287, -81.716830),
-                new google.maps.LatLng(41.584380, -81.575907));
+                new google.maps.LatLng(41.650030, -83.003366),
+                new google.maps.LatLng(40.731486, -81.099373));
 
             var lastValidCenter = map.getCenter();
 
@@ -114,7 +125,7 @@
                 var marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
-                    //icon: bucket,
+                    icon: image,
                     title: nameArray[i]
                 });
 

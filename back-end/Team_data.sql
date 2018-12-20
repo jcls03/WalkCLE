@@ -14,7 +14,10 @@ VALUES (1, 'Mon', 'Monday'), (2, 'Tues', 'Tuesday'),
 (5, 'Fri', 'Friday'), (6, 'Sat', 'Saturday'),
 (7, 'Sun', 'Sunday');
 
-
+INSERT INTO venue_types ([type])
+VALUES ('bar'), ('restaurant'), ('landmark'),
+('museum'), ('cinema'), ('theater'), 
+('stadium'), ('school'), ('park'), ('venue');
 
 INSERT INTO locations ([name], [description], street, city, district, zip, latitude, longitude, web_link, fb_link, tw_link, ig_link)
 VALUES ('Tech Elevator', 'Tech Elevator is the PREMIER coding boot camp in North East Ohio.  Home to awesome staff like Josh Tucholski, and Frank Fella.  Fondeded by none other than Anthony Hughes and David Wintrich.  It has launched the careers of such programming giants as Kevin Batel, Jess Cray-Smith, Joe D''Antonio and Adam W. Seal.', '7100 Euclid Ave #140', 'Cleveland', 'OH', '44103', 41.503756, -81.638892, 'https://www.techelevator.com/', 'https://www.facebook.com/techelevator/', 'https://twitter.com/Tech_Elevator', 'https://www.instagram.com/techelevator/?hl=en'),
@@ -78,15 +81,7 @@ VALUES (@techElevatorId,
 (@quickenLoansId,
 (SELECT id FROM venue_types WHERE [type]='stadium')),
 (@cedarPointId,
-(SELECT id FROM venue_types WHERE [type]='landmark')),
-
-
-
-INSERT INTO venue_types ([type])
-VALUES ('bar'), ('restaurant'), ('landmark'),
-('museum'), ('cinema'), ('theater'), 
-('stadium'), ('school'), ('park'), ('venue');
-
+(SELECT id FROM venue_types WHERE [type]='landmark'));
 
 COMMIT TRANSACTION;
 
