@@ -224,15 +224,17 @@
         <select asp-for="Type" asp-items="LocationDetail.TypeList" style="color:black;"></select>*@
 
                     <br />
-
-                    <button asp-for="Type" value="bar">Bars</button>
-                    <button asp-for="Type" value="museum">Museums</button>
-                    <button asp-for="Type" value="cinema">Theater</button>
-                    <button asp-for="Type" value="stadium">Sports</button>
-                    <button asp-for="Type" value="music">Music</button>
-                    <button asp-for="Type" value="park">Parks</button>
-                    <button asp-for="Type" value="historical site">Historical</button>
+                    
+                    <button type="submit" name="Type" value="bar">Bar</button>
+                    <button type="submit" name="Type" value="museum">Museums</button>
+                    <button type="submit" name="Type" value="cinema">Theater</button>
+                    <button type="submit" name="Type" value="stadium">Sports</button>
+                    <button type="submit" name="Type" value="music">Music</button>
+                    <button type="submit" name="Type" value="park">Parks</button>
+                    <button type="submit" name="Type" value="historical site">Historical</button>
+                    
                 </form>
+
                 @*<form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="museum" />
                 </form>

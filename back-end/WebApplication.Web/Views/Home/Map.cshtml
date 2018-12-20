@@ -116,10 +116,11 @@
 
                 
         async function initMap() {         
-
+                       
             await getlatlng();
             
             console.log(originLat, originLng);
+
 
             // Create the map.
             map = new google.maps.Map(document.getElementById('map'), {
@@ -198,7 +199,7 @@
         function createMarkers(places) {
             var bounds = new google.maps.LatLngBounds();
             var placesList = document.getElementById('places');
-
+5
             for (var i = 0, place; place = places[i]; i++) {
                 var image = {
                     url: place.icon,
