@@ -35,15 +35,15 @@
         display: grid;
         position: absolute;
         grid-gap: 10px;
-        width: auto;
+        width: 100%;
         height: 90%;
         z-index: 1;
         grid-template-rows: 10% 30% 50% 10%;
         grid-template-columns: 10% 25% 20% 25% 10%;
-        grid-template-areas: ". . . . ." ". title title about ." ". entryField optionSelect optionSelect ." ". . . . ."
+        grid-template-areas: ". . . . ." ". title title about ." ". optionSelect optionSelect optionSelect ." ". . . . ."
     }
 
-    .buttons > button {
+    .buttons > form > button {
         background-color: cornflowerblue;
         border: none;
         color: white;
@@ -88,7 +88,8 @@
     }
 
     .buttons {
-        grid-area: buttons;
+        display:flex;
+        flex-direction: row;
         justify-content: center;
     }
 
@@ -96,7 +97,7 @@
         grid-area: submit;
     }
 
-    .entryField {
+    /*.entryField {
         border: 3px solid rgba(25, 25, 25, .5);
         width: auto;
         padding: 20px;
@@ -107,7 +108,7 @@
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr;
         grid-template-areas: "looking" "around" "letsGo"
-    }
+    }*/
 
     .looking {
         grid-area: looking;
@@ -162,7 +163,7 @@
             WalkCLE
         </div>
 
-        <div class="entryField">
+        @*<div class="entryField">
             
             <form asp-controller="home" asp-action="map" method="get">
 
@@ -187,7 +188,7 @@
                 </button>
             </form>
             
-        </div>
+        </div>*@
 
 
 
