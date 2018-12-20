@@ -43,6 +43,8 @@ namespace WebApplication.Web.DAL
                         locationDetail.FbLink = Convert.ToString(reader["fb_link"]);
                         locationDetail.TwLink = Convert.ToString(reader["tw_link"]);
                         locationDetail.IgLink = Convert.ToString(reader["ig_link"]);
+                        locationDetail.Image_Path = Convert.ToString(reader["image_path"]);
+
                     }
                 }
 

@@ -229,5 +229,5 @@ SELECT * FROM locations
 
 SELECT name, latitude, longitude FROM locations
 
-ALTER TABLE locations
-ADD image_path varchar(50)
+--ALTER TABLE locations
+--ADD image_path varchar(50)
