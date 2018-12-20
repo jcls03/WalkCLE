@@ -85,8 +85,8 @@
             // Create the map.
             map = new google.maps.Map(document.getElementById('map'), {
                 center: OEC,
-                zoom: 10,
-                minZoom: 10,
+                zoom: 9,
+                minZoom: 9,
                 maxZoom: 18,
                 styles: [
                     {
@@ -130,6 +130,14 @@
                 });
 
                 marker.setMap(map)
+
+                marker.linkUrl = 'https://google.com';
+
+                marker.addListener('click', function () {
+
+                    window.location = this.linkUrl;
+
+                });
 
             }
         }
