@@ -224,7 +224,9 @@
         <select asp-for="Type" asp-items="LocationDetail.TypeList" style="color:black;"></select>*@
 
                     <br />
-
+                    <label asp-for="Type" >Bars</label>
+                    <br />
+                    <input asp-for="Type" type="button" />
                     <button asp-for="Type" value="bar">Bars</button>
                     <button asp-for="Type" value="museum">Museums</button>
                     <button asp-for="Type" value="cinema">Theater</button>
@@ -233,6 +235,8 @@
                     <button asp-for="Type" value="park">Parks</button>
                     <button asp-for="Type" value="historical site">Historical</button>
                 </form>
+
+
                 @*<form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="museum" />
                 </form>

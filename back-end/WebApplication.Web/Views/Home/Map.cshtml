@@ -101,16 +101,10 @@
 
             var APIUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw";
 
-            console.log(APIUrl);
-
              await $.getJSON(APIUrl, function (data) {
-                console.log(data.results[0].geometry.location.lat);
-                console.log(data.results[0].geometry.location.lng);
                 originLat = data.results[0].geometry.location.lat,
                 originLng = data.results[0].geometry.location.lng
             });
-
-            console.log(originLat, originLng);
    
         }
 
@@ -118,8 +112,6 @@
         async function initMap() {         
 
             await getlatlng();
-            
-            console.log(originLat, originLng);
 
             // Create the map.
             map = new google.maps.Map(document.getElementById('map'), {
@@ -139,6 +131,9 @@
                     }
                 ]
             });
+
+
+            
 
 
             // Bounds for WalkCLE
