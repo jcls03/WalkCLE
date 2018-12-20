@@ -43,6 +43,8 @@ namespace WebApplication.Web.DAL
                         locationDetail.FbLink = Convert.ToString(reader["fb_link"]);
                         locationDetail.TwLink = Convert.ToString(reader["tw_link"]);
                         locationDetail.IgLink = Convert.ToString(reader["ig_link"]);
+                        locationDetail.Image_Path = Convert.ToString(reader["image_path"]);
+
                     }
                 }
 
@@ -84,7 +86,8 @@ namespace WebApplication.Web.DAL
                             WebLink = Convert.ToString(reader["web_link"]),
                             FbLink = Convert.ToString(reader["fb_link"]),
                             TwLink = Convert.ToString(reader["tw_link"]),
-                            IgLink = Convert.ToString(reader["ig_link"])
+                            IgLink = Convert.ToString(reader["ig_link"]),
+                            Image_Path = Convert.ToString(reader["image_path"])
                         };
 
                         locationsOnMap.Add(locations);

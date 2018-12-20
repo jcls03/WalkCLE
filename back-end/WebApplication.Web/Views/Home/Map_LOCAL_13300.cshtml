@@ -1,4 +1,4 @@
-﻿@model MapStuff
+﻿@model LocationDetail
 @{
     ViewData["Title"] = "Map";
 
@@ -15,7 +15,6 @@
             top: 0;
             left: 0;
             z-index: 0;
-            /* The width is the width of the web page */
         }
 
         .mapGrid {
@@ -32,28 +31,11 @@
 
         .searchBar {
             grid-area: searchBar;
+            background: black;
             height: auto;
             width: 20%;
-            position: absolute;
-            opacity: .9;
-            z-index: 2;
-            background-color: var(--black);
-            color: var(--blue);
-            font-weight: bold;
-            padding: 10px;
-            line-height: 1.45em;
-        }
-
-        .searchBar a {
-            color: var(--blue);
-        }
-
-        .searchBar h2 {
-            color: var(--tan);
-        }
-
-        .searchBar button {
-            color: var(--black);
+            position:absolute;
+            opacity: .8;
         }
 
         .searchBarInfo {
@@ -66,34 +48,25 @@
             display:none;
         }
 
-        .body-content {
-            margin: 0;
-        }
+
 
     </style>
 </head>
 <body>
     <div id="map"></div>
-
-
-
     <script>
         var map;
-        var cleveland = { lat: 41.4993, lng: -81.6944 };   
-
-        
-
-        var bucket = "~back-end/WebApplication.Web/wwwroot/images/Bucket.png";
-
+        // var cleveland = { lat: 41.4993, lng: -81.6944 };
         var origin = "@Model.Origin";
-        var originLat;
-        var originLng;  
+        var originLat = 0;
+        var originLng = 0;
+        
+        
+        function getlatlng() {
 
-        async function getlatlng() {
-
-            var address1 = origin.replace(/ /g, '+');
-            var city = "+Cleveland";
-            var state = "+OH";
+            var address1 = origin
+            var city = "Cleveland";
+            var state = "OH";
 
 
             var address = address1 + ',' + city + ',' + state;
@@ -101,40 +74,42 @@
 
             var APIUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAKzhMLUvwCaJupiGu-cNLevQG_Hl3DIcw";
 
-             await $.getJSON(APIUrl, function (data) {
-                originLat = data.results[0].geometry.location.lat,
-                originLng = data.results[0].geometry.location.lng
-            });
-   
+            return console.log(APIUrl);
+
+            fetch(APIUrl, {
+                method: "GET",
+                body: JSON
+            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    originLat = data.results[0].geometry.location.lat,
+                    originLng = data.results[0].geometry.location.lng
+                });
+
+
+
+            //$.getJSON(APIUrl, function (data) {
+            //    console.log(data.results[0].geometry.location.lat),
+
+            //    originLat = data.results[0].geometry.location.lat,
+            //    originLng = data.results[0].geometry.location.lng
+
+            //});
+
+            return console.log(originLat, originLng);
         }
 
-                
-        async function initMap() {         
-                       
-            await getlatlng();
 
-
+        function initMap() {
             // Create the map.
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: originLat, lng: originLng },
                 zoom: 15,
                 minZoom: 11,
-                maxZoom: 18,
-                styles: [
-                    {
-                        featureType: 'poi',
-                        stylers: [{ visibility: 'off' }]
-                    },
-                    {
-                        featureType: 'transit',
-                        elementType: 'labels.icon',
-                        stylers: [{ visibility: 'off' }]
-                    }
-                ]
+                maxZoom: 18
             });
-
-
-            
 
 
             // Bounds for WalkCLE
@@ -155,8 +130,11 @@
                 map.panTo(lastValidCenter);
             });
 
-
-            
+            //var marker = new google.maps.Marker({
+            //    position: cleveland,
+            //    map: map,
+            //    title: 'Elevate Yourself!'
+            //});
 
             // Create the places service.
             var service = new google.maps.places.PlacesService(map);
@@ -168,16 +146,8 @@
             };
 
             // Perform a nearby search.
-            //var request = {
-            //    location: cleveland,
-            //    radius: '200',
-            //    query: 'theater'
-            //}
-
-            //service = new google.maps.places.PlacesService(map)
-            //service.textSearch(request, callback);
-
             service.nearbySearch(
+                // location: was cleveland hard code
 
                 { location: { lat: originLat, lng: originLng }, rankBy: google.maps.places.RankBy.DISTANCE, type: ['@Model.Type'] },
                 function (results, status, pagination) {
@@ -194,7 +164,7 @@
         function createMarkers(places) {
             var bounds = new google.maps.LatLngBounds();
             var placesList = document.getElementById('places');
-5
+
             for (var i = 0, place; place = places[i]; i++) {
                 var image = {
                     url: place.icon,
@@ -212,14 +182,12 @@
                 });
 
                 var li = document.createElement('li');
-                li.innerHTML = `<a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}">${place.name}</a>`;
+                li.textContent = place.name;
                 placesList.appendChild(li);
 
                 bounds.extend(place.geometry.location);
             }
             map.fitBounds(bounds);
-
-            
         }
 
     </script>

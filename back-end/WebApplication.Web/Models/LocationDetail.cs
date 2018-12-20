@@ -81,6 +81,11 @@ namespace WebApplication.Web.Models
         /// </summary>
         public string IgLink { get; set; }
 
+        /// <summary>
+        /// Image Name
+        /// </summary>
+        public string Image_Path { get; set; }
+
         [Required]
         [DisplayName("-- Select an activity --")]
         public static IList<SelectListItem> TypeList = new List<SelectListItem>()
