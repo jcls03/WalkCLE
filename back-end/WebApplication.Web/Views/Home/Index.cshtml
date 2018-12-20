@@ -54,8 +54,8 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        height: 66px;
-        width: 88px;
+        height: 88px;
+        width: 100px;
     }
 
     .title {
@@ -193,44 +193,48 @@
 
 
         <div class="optionSelect">
-            <div class="top">
+            @*<div class="top">
                 <strong>
-                    In a hurry? Quick options!
+                    Where are you?
                 </strong>
-            </div>
+            </div>*@
 
             <div class="buttons" style="padding-bottom: 20px;">
                 <form asp-controller="home" asp-action="map" method="get">
-                    <button type="submit" asp-for="Type" value="bar">Bars</button>
+                    <label asp-for="Origin">Where are you?</label>
+                    <input asp-for="Origin" type="text" style="color:black;" required />
+
+                    @*<label asp-for="Type">What are you looking for?</label>
+        <select asp-for="Type" asp-items="LocationDetail.TypeList" style="color:black;"></select>*@
+
+                    <br />
+
+                    <button asp-for="Type" value="bar">Bars</button>
+                    <button asp-for="Type" value="museum">Museums</button>
+                    <button asp-for="Type" value="cinema">Theater</button>
+                    <button asp-for="Type" value="stadium">Sports Fields</button>
+                    <button asp-for="Type" value="music">Music Venues</button>
+                    <button asp-for="Type" value="park">Parks</button>
+                    <button asp-for="Type" value="historical site">Historical Landmarks</button>
                 </form>
-                <form asp-controller="home" asp-action="map" method="get">
-                    <input type="hidden" asp-for="Type" value="bar" />
-                    <button>Bars</button>
-                </form>
-                <form asp-controller="home" asp-action="map" method="get">
+                @*<form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="museum" />
-                    <button>Museums</button>
                 </form>
                 <form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="cinema" />
-                    <button>Theater</button>
                 </form>
                 <form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="stadium" />
-                    <button>Sports Fields</button>
                 </form>
                 <form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="music" />
-                    <button>Music Venues</button>
                 </form>
                 <form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="park" />
-                    <button>Parks</button>
                 </form>
                 <form asp-controller="home" asp-action="map" method="get">
                     <input type="hidden" asp-for="Type" value="historical site" />
-                    <button>Historical Landmarks</button>
-                </form>
+                </form>*@
             </div>
         </div>
     </div>
