@@ -86,6 +86,11 @@ namespace WebApplication.Web.Models
         /// </summary>
         public string Image_Path { get; set; }
 
+        /// <summary>
+        /// Google Place Id
+        /// </summary>
+        public string Place_Id { get; set; }
+
         [Required]
         [DisplayName("-- Select an activity --")]
         public static IList<SelectListItem> TypeList = new List<SelectListItem>()
