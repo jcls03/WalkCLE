@@ -10,28 +10,54 @@
         background-color: #584036;
     }
 
-    .words {
+    .words, h2 {
+        text-align: center;
         color: #E6D5A5;
+        padding-bottom: 20px;
+    }
+
+    .register {
+        border: 3px solid rgba(25, 25, 25, .5);
+        width: 400px;
+        padding: 20px;
+        background: rgba(52, 41, 7, .5);
+        border-radius: 3px;
+        margin: auto;
+        margin-top: 25px;
     }
 </style>
 
-<h2>Register</h2>
+<div class="register">
+    <h2 style="margin-right:auto; margin-left:auto;">Register</h2>
 
-<form asp-controller="account" asp-action="register" method="post" class="words">
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" placeholder="Email" style="color:black"/>
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input type="password" asp-for="Password" style="color:black"/>
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword"></label>
-        <input type="password" asp-for="ConfirmPassword" style="color:black"/>
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+    <form asp-controller="account" asp-action="register" method="post" class="words">
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" placeholder="Email" style="left: 20px; color:black" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" style="color:black" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <input type="password" asp-for="ConfirmPassword" style="color:black" />
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+<hr style="   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;
+   z-index:0" />
+<footer style="   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;">
+    <p style="color:#E6D5A5; z-index:4">&copy; 2018 - WalkCLE Team</p>
+</footer>

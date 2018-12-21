@@ -10,21 +10,60 @@
     }
 
     .words {
+        text-align: center;
         color: #E6D5A5;
+        padding-bottom: 20px;
+    }
+
+    .gridTotal {
+        display: grid;
+        border: 3px solid rgba(25, 25, 25, .5);
+        width: 100%;
+        padding: 20px;
+        background: rgba(52, 41, 7, .5);
+        border-radius: 3px;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: ". login ."
+    }
+
+    .login {
+        border: 3px solid rgba(25, 25, 25, .5);
+        width: 400px;
+        padding: 20px;
+        background: rgba(52, 41, 7, .5);
+        border-radius: 3px;
+        margin: auto;
+        margin-top: 25px;
+        text-align: center;
     }
 </style>
-<h2 class="words">Login</h2>
 
-<form asp-controller="account" asp-action="login" method="post" class="words">
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" placeholder="Email" style="color:black"/>    
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input type="password" asp-for="Password" style="color:black"/>        
-        <span asp-validation-for="Password"></span>
-    </div>        
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<div class="login">
+    <h2 class="words">Login</h2>
+    <form asp-controller="account" asp-action="login" method="post" class="words">
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" placeholder="Email" style="color:black" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" style="color:black" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+
+<hr style="   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;
+   z-index:0" />
+<footer style="   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;">
+    <p style="color:#E6D5A5; z-index:4">&copy; 2018 - WalkCLE Team</p>
+</footer>
